@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Task Manager</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="p-4 sm:p-8">
+
+    <div id="app" class="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-6 sm:p-10">
+
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">Task Manager</h1>
+        <p class="text-gray-500 mb-8">Organize your work with priority-based sorting and filtering.</p>
+
+        <!-- Task Input Form -->
+        <form id="task-form" class="flex flex-col sm:flex-row gap-3 mb-8">
+            <input type="text" id="task-input" placeholder="Enter a new task..." required
+                class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700">
+
+            <select id="priority-select"
+                class="p-3 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 sm:w-40">
+                <option value="High">High Priority</option>
+                <option value="Medium" selected>Medium Priority</option>
+                <option value="Low">Low Priority</option>
+            </select>
+
+            <button type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
+                Add Task
+            </button>
+        </form>
+
+        <!-- Controls (Sort & Filter) -->
+        <div
+            class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 p-4 bg-gray-50 rounded-lg shadow-inner">
+            <div class="flex items-center gap-3">
+                <label for="sort-select" class="text-sm font-medium text-gray-600">Sort By:</label>
+                <select id="sort-select" class="p-2 border border-gray-300 rounded-md bg-white text-gray-700">
+                    <option value="priority-desc">Priority (High to Low)</option>
+                    <option value="priority-asc">Priority (Low to High)</option>
+                    <option value="latest">Latest First</option>
+                </select>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <label for="filter-select" class="text-sm font-medium text-gray-600">Filter:</label>
+                <select id="filter-select" class="p-2 border border-gray-300 rounded-md bg-white text-gray-700">
+                    <option value="all">Show All</option>
+                    <option value="High">High Priority</option>
+                    <option value="Medium">Medium Priority</option>
+                    <option value="Low">Low Priority</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Task List -->
+        <div id="task-list" class="space-y-3">
+            <!-- Tasks will be injected here -->
+            <p id="no-tasks-message" class="text-center text-gray-400 p-8 hidden">You're all caught up! Add a new task
+                above.</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
